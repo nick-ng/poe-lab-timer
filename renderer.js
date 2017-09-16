@@ -4,12 +4,8 @@
 
 const Tail = require('always-tail');
 
-const {
-  promiseTimeout,
-  shapeLog,
-} = require('./utils');
-const { readPromise, getLog } = require('./utils/fs');
-const { roomIdentifier } = require('./utils/labyrinth');
+const { promiseTimeout, shapeLog } = require('./utils');
+const { readPromise, readAndSplitLines, getLog } = require('./utils/fs');
 const { makeDirections, emptyElement } = require('./utils/dom');
 const LabyrinthRun = require('./classes/labyrinth-run');
 

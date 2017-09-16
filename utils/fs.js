@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { shapeLog } = require('./index');
+const { shapeLog, splitLines } = require('./index');
 
 const readPromise = (path, encoding = 'utf8') => new Promise((resolve, reject) => {
   fs.readFile(path, encoding, (err, data) => {
@@ -9,6 +9,16 @@ const readPromise = (path, encoding = 'utf8') => new Promise((resolve, reject) =
     resolve(data);
   });
 });
+
+const readAndSplitLines = async (path) => {
+  try {
+    const string = await readPromise(path);
+    return splitLines(string);
+  } catch (err) {
+    console.log(err);
+  }
+  return [];
+}
 
 const getLog = async (path) => {
   try {
@@ -22,5 +32,6 @@ const getLog = async (path) => {
 
 module.exports = {
   readPromise,
+  readAndSplitLines,
   getLog,
 }

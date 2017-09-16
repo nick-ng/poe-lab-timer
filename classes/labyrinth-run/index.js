@@ -1,9 +1,9 @@
 const uuid = require('uuid/v4');
 const Tail = require('always-tail');
 const fs = require('fs');
-const { splitLines, shapeLog } = require('../utils');
-const { readPromise } = require('../utils/fs');
-const { plazaIdentifier, roomIdentifier, izaroQuote, izaroFinalDialogue, leftLabyrinth } = require('../utils/labyrinth');
+const { splitLines, shapeLog } = require('../../utils');
+const { readPromise } = require('../../utils/fs');
+const { plazaIdentifier, roomIdentifier, izaroQuote, izaroFinalDialogue, leftLabyrinth } = require('./labyrinth-utils');
 
 class LabyrinthRun {
   constructor(logPath = '../../Games/PathOfExile/logs/Client.txt') {
@@ -139,7 +139,7 @@ class LabyrinthRun {
     if (this.tail) {
       this.tail.unwatch();
     }
-    this.tail = new Tail(logPath, separator, 340);
+    this.tail = new Tail(logPath, separator, 199);
     this.tail.on('line', this._tailHandler);
   }
 
